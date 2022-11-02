@@ -1,9 +1,9 @@
 package dev.alexengrig.sample.spring.contract.rest.consumer.client;
 
-import dev.alexengrig.sample.spring.contract.rest.consumer.dto.ProducerDataResponse;
+import dev.alexengrig.sample.spring.contract.rest.producer.dto.v1.ProducerDataResponseV1;
 
 public interface ProducerDataClientV1 {
 
-    ProducerDataResponse getData(String dataId);
+    ProducerDataResponseV1 getData(String dataId);
 
 }

@@ -6,6 +6,8 @@ plugins {
 description = 'REST Producer Service'
 
 dependencies {
+    implementation project(':rest-producer-dto')
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
