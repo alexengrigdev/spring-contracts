@@ -1,4 +1,4 @@
-package dev.alexengrig.sample.spring.contract.rest.consumer.client;
+package dev.alexengrig.sample.spring.contract.rest.producer.client.v2;
 
 import dev.alexengrig.sample.spring.contract.rest.producer.dto.v2.ProducerDataRequestV2;
 import dev.alexengrig.sample.spring.contract.rest.producer.dto.v2.ProducerDataResponseV2;

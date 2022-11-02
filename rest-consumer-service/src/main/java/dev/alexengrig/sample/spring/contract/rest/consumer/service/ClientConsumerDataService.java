@@ -1,8 +1,8 @@
 package dev.alexengrig.sample.spring.contract.rest.consumer.service;
 
-import dev.alexengrig.sample.spring.contract.rest.consumer.client.ProducerDataClientV1;
-import dev.alexengrig.sample.spring.contract.rest.consumer.client.ProducerDataClientV2;
 import dev.alexengrig.sample.spring.contract.rest.consumer.domain.ConsumedData;
+import dev.alexengrig.sample.spring.contract.rest.producer.client.v1.ProducerDataClientV1;
+import dev.alexengrig.sample.spring.contract.rest.producer.client.v2.ProducerDataClientV2;
 import dev.alexengrig.sample.spring.contract.rest.producer.dto.v1.ProducerDataResponseV1;
 import dev.alexengrig.sample.spring.contract.rest.producer.dto.v2.ProducerDataRequestV2;
 import dev.alexengrig.sample.spring.contract.rest.producer.dto.v2.ProducerDataResponseV2;

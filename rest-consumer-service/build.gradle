@@ -1,22 +1,13 @@
 plugins {
     id 'org.springframework.boot'
     id 'io.spring.dependency-management'
+    id 'java'
 }
 
 description = 'REST Consumer Service'
 
-dependencyManagement {
-    imports {
-        mavenBom 'io.github.openfeign:feign-bom:12.0'
-    }
-}
-
 dependencies {
-    implementation project(':rest-producer-dto')
-
-    implementation 'io.github.openfeign:feign-okhttp'
-    implementation 'io.github.openfeign:feign-jackson'
-    implementation 'io.github.openfeign:feign-slf4j'
+    implementation project(':rest-producer-feign-client')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'

@@ -1,7 +1,7 @@
-package dev.alexengrig.sample.spring.contract.rest.consumer.config;
+package dev.alexengrig.sample.spring.contract.rest.producer.client.feign.config;
 
-import dev.alexengrig.sample.spring.contract.rest.consumer.client.FeignProducerDataClientV1;
-import dev.alexengrig.sample.spring.contract.rest.consumer.client.FeignProducerDataClientV2;
+import dev.alexengrig.sample.spring.contract.rest.producer.client.feign.FeignProducerDataClientV1;
+import dev.alexengrig.sample.spring.contract.rest.producer.client.feign.FeignProducerDataClientV2;
 import feign.Feign;
 import feign.Logger;
 import feign.Retryer;
@@ -11,12 +11,12 @@ import feign.okhttp.OkHttpClient;
 import feign.slf4j.Slf4jLogger;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@AutoConfiguration
 @RequiredArgsConstructor
-public class FeignClientConfiguration {
+public class FeignClientAutoConfiguration {
 
     @Value("${services.producer.url}")
     private final String producerServiceUrl;

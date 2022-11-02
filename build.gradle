@@ -4,17 +4,18 @@ plugins {
 }
 
 subprojects {
-    apply plugin: 'java'
-
     group = 'dev.alexengrig.sample'
     version = '0-SAMPLE'
-    sourceCompatibility = '17'
 
-    repositories {
-        mavenCentral()
-    }
+    pluginManager.withPlugin('java') {
+        sourceCompatibility = '17'
 
-    test {
-        useJUnitPlatform()
+        repositories {
+            mavenCentral()
+        }
+
+        test {
+            useJUnitPlatform()
+        }
     }
 }
