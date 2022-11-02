@@ -1,0 +1,8 @@
+### get data
+
+POST http://localhost:8080/api/v2/datum
+Content-Type: application/json
+
+{
+  "id": "test-data"
+}
