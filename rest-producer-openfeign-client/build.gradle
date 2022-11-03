@@ -1,0 +1,40 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins {
+    id 'io.spring.dependency-management'
+    id 'java-library'
+    id 'maven-publish'
+}
+
+description = 'REST Producer OpenFeign Clients'
+
+dependencyManagement {
+    imports {
+        mavenBom SpringBootPlugin.BOM_COORDINATES
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2021.0.4'
+    }
+}
+
+dependencies {
+    api project(':rest-producer-client')
+
+    api platform('org.springframework.cloud:spring-cloud-dependencies:2021.0.4')
+    api 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    api 'io.github.openfeign:feign-okhttp'
+    api 'io.github.openfeign:feign-jackson'
+    api 'io.github.openfeign:feign-slf4j'
+    //spring-cloud-openfeign.version
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}

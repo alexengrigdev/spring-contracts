@@ -7,9 +7,10 @@ plugins {
 description = 'REST Consumer Service'
 
 dependencies {
-    implementation project(':rest-producer-feign-client')
+    implementation project(':rest-producer-openfeign-client')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

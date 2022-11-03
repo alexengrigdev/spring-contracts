@@ -1,6 +1,13 @@
 server:
   port: 8081
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - '*'
+
 services:
   producer:
     url: http://localhost:8080
