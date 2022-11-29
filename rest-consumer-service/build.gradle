@@ -6,6 +6,16 @@ plugins {
 
 description = 'REST Consumer Service'
 
+repositories {
+    mavenLocal()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
 dependencies {
     implementation project(':rest-producer-feign-client')
 
@@ -13,4 +23,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    testImplementation "dev.alexengrig.sample:rest-producer-service:${project.version}:stubs"
+
+    testImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock'
+    testImplementation 'org.springframework.cloud:spring-cloud-contract-stub-runner'
 }
