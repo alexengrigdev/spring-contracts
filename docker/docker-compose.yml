@@ -1,0 +1,29 @@
+name: spring-contracts
+
+services:
+
+  postgres:
+    image: postgres
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+
+  pact-broker:
+    image: dius/pact-broker
+    ports:
+      - "8085:80"
+    links:
+      - postgres
+    depends_on:
+      - postgres
+    environment:
+      PACT_BROKER_DATABASE_USERNAME: postgres
+      PACT_BROKER_DATABASE_PASSWORD: postgres
+      PACT_BROKER_DATABASE_HOST: postgres
+      PACT_BROKER_DATABASE_NAME: postgres
+
+volumes:
+  postgres-volume:
