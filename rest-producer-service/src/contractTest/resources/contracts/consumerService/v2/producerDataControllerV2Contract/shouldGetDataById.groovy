@@ -1,4 +1,4 @@
-package contracts.v2.producerDataControllerV2Contract
+package contracts.consumerService.v2.producerDataControllerV2Contract
 
 import org.springframework.cloud.contract.spec.Contract
 
@@ -10,7 +10,7 @@ Contract.make {
             contentType(applicationJson())
         }
         body(
-                id: anyNonBlankString()
+                id: $('consumer-data-v2')
         )
     }
     response {
@@ -19,8 +19,8 @@ Contract.make {
             contentType(applicationJson())
         }
         body(
-                id: fromRequest().body('$.id'),
-                value: anyNonBlankString()
+                id: $('consumer-data-v2'),
+                value: $('Value for: consumer-data-v2')
         )
     }
 }

@@ -8,8 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.MOCK,
@@ -25,16 +23,14 @@ class ClientConsumerDataServiceIntegrationTest {
     void should_consume_dataV1() {
         ConsumedData data = service.consumeDataV1();
         assertEquals("consumer-data-v1", data.getId(), "Id");
-        assertNotNull(data.getValue(), "Value");
-        assertFalse(data.getValue().isBlank(), "Blank value");
+        assertEquals("Value for: consumer-data-v1", data.getValue(), "Value");
     }
 
     @Test
     void should_consume_dataV2() {
         ConsumedData data = service.consumeDataV2();
         assertEquals("consumer-data-v2", data.getId(), "Id");
-        assertNotNull(data.getValue(), "Value");
-        assertFalse(data.getValue().isBlank(), "Blank value");
+        assertEquals("Value for: consumer-data-v2", data.getValue(), "Value");
     }
 
 }

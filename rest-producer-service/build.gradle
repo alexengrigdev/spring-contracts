@@ -30,11 +30,11 @@ contracts {
     baseClassForTests = 'dev.alexengrig.sample.spring.contract.rest.producer.controller.BaseControllerContractTest'
     baseClassMappings {
         baseClassMapping(
-                'v1.producerDataControllerV1Contract',
+                '.*.v1.producerDataControllerV1Contract',
                 'dev.alexengrig.sample.spring.contract.rest.producer.controller.v1.BaseProducerDataControllerV1ContractTest'
         )
         baseClassMapping(
-                'v2.producerDataControllerV2Contract',
+                '.*.v2.producerDataControllerV2Contract',
                 'dev.alexengrig.sample.spring.contract.rest.producer.controller.v2.BaseProducerDataControllerV2ContractTest'
         )
     }
