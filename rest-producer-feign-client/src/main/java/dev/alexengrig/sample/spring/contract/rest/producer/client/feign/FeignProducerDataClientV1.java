@@ -6,7 +6,6 @@ import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 
-@Headers("Content-Type: application/json")
 public interface FeignProducerDataClientV1 extends ProducerDataClientV1 {
 
     @RequestLine("GET /{dataId}")
