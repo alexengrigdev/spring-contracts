@@ -1,0 +1,10 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: other-consumer-service
+
+services:
+  producer:
+    url: http://localhost:8080
