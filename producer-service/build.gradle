@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'org.springframework.cloud.contract'
+    id 'maven-publish'
+}
+
+description = 'Producer Service'
+
+dependencies {
+    implementation project(':producer-rest-dto')
+    testImplementation project(':producer-rest-client')
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
+}
+
+contracts {
+    def pkg = 'dev.alexengrig.sample.producer.contract'
+    baseClassForTests = "${pkg}.BaseContractTest"
+    baseClassMappings {
+        baseClassMapping(
+                // language=RegExp
+                '^(\\w|-)+\\.messaging$',
+                "${pkg}.messaging.BaseMessagingContractTest")
+        baseClassMapping(
+                // language=RegExp
+                '^other-consumer-service.rest$',
+                "${pkg}.rest.BaseOtherCustomerSerivceRestContractTest")
+        baseClassMapping(
+                // language=RegExp
+                '^(\\w|-)+\\.rest$',
+                "${pkg}.rest.BaseRestContractTest")
+    }
+}
+
+publishing {
+    publications {
+        verifierStubs(MavenPublication) {
+            artifact verifierStubsJar
+        }
+    }
+}
