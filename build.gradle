@@ -1,26 +1,63 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
 plugins {
-    id 'org.springframework.boot' version '2.7.5' apply false
+    id 'org.springframework.boot' version '2.7.8' apply false
     id 'io.spring.dependency-management' version '1.0.15.RELEASE' apply false
-    id 'org.springframework.cloud.contract' version '3.1.4' apply false
+    id 'org.springframework.cloud.contract' version '3.1.5' apply false
 }
 
 ext {
-    set('springCloudVersion', '2021.0.4')
+    set('springCloudVersion', '2021.0.5')
 }
 
 subprojects {
     group = 'dev.alexengrig.sample'
     version = '0-SAMPLE'
 
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
     pluginManager.withPlugin('java') {
         sourceCompatibility = '17'
 
-        repositories {
-            mavenCentral()
-        }
-
         tasks.withType(Test) {
             useJUnitPlatform()
+        }
+
+        // for services
+        pluginManager.withPlugin('org.springframework.boot') {
+            pluginManager.withPlugin('io.spring.dependency-management') {
+                dependencyManagement {
+                    imports {
+                        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+                    }
+                }
+            }
+
+            dependencies {
+                implementation 'org.springframework.boot:spring-boot-starter'
+                testImplementation 'org.springframework.boot:spring-boot-starter-test'
+            }
+        }
+
+        // for libraries
+        pluginManager.withPlugin('io.spring.dependency-management') {
+            if (!pluginManager.hasPlugin('org.springframework.boot')) {
+                dependencyManagement {
+                    imports {
+                        mavenBom SpringBootPlugin.BOM_COORDINATES
+                    }
+                }
+            }
+
+            dependencies {
+                compileOnly 'org.projectlombok:lombok'
+                annotationProcessor 'org.projectlombok:lombok'
+                testCompileOnly 'org.projectlombok:lombok'
+                testAnnotationProcessor 'org.projectlombok:lombok'
+            }
         }
     }
 }

@@ -1,0 +1,9 @@
+plugins {
+    id 'java-library'
+}
+
+description = 'Producer Rest Clients'
+
+dependencies {
+    api project(':producer-rest-dto')
+}

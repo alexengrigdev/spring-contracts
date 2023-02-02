@@ -1,0 +1,6 @@
+plugins {
+    id 'java-library'
+    id 'io.spring.dependency-management'
+}
+
+description = 'Producer Rest DTOs'

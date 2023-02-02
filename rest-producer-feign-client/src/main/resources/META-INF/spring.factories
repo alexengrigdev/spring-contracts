@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  dev.alexengrig.sample.spring.contract.rest.producer.client.feign.config.FeignClientAutoConfiguration
